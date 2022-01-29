@@ -11,7 +11,9 @@ function Logout({setUser}) {
         setUser(null);
         Cookies.remove('jwt-token');
         history.push('/browse');
-    },[])
+    },
+    // eslint-disable-next-line 
+    [])
   return <div></div>;
 }
 

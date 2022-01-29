@@ -31,7 +31,9 @@ function App({setUser,setCamps}) {
     }).catch((e)=>{
       console.log(e);
     })
-  },[]);
+  },
+  // eslint-disable-next-line 
+  []);
   return (
     <Router>
   <div>

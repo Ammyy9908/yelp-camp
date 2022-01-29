@@ -1,15 +1,12 @@
 import React from 'react';
 import "./LoginPage.css"
-import {Link, useHistory} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import login from '../utils/login'
 import Cookies from 'js-cookie';
 function LoginPage() {
 
     const [username,setUsername] = React.useState("");
     const [password,setPassword] = React.useState("");
-
-
-    const history = useHistory();
 
 
 

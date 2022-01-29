@@ -4,19 +4,19 @@ import { connect } from 'react-redux';
 import HeaderMain from '../components/HeaderMain';
 import "./IndividualCamp.css";
 
-function Review(){
-    return <div className='camp-review'>
-        <div className="review-header">
-            <h3>Adam Jones</h3>
-            <span className="review-time">13h ago</span>
-        </div>
-        <p className="review-text">Honestly one of the best experiences ever, took us a while to figure out
-how to get there but it was amazing!</p>
-    </div>
-}
+// function Review(){
+//     return <div className='camp-review'>
+//         <div className="review-header">
+//             <h3>Adam Jones</h3>
+//             <span className="review-time">13h ago</span>
+//         </div>
+//         <p className="review-text">Honestly one of the best experiences ever, took us a while to figure out
+// how to get there but it was amazing!</p>
+//     </div>
+// }
 function IndividualCamp({id,user}) {
     const [campdata,setCamp] = React.useState(null);
-    const [reviews,setReviews] = React.useState(null);
+    // const [reviews,setReviews] = React.useState(null);
     const [postBy,setPostBy] = React.useState(null);
 
     React.useEffect(()=>{
@@ -29,12 +29,17 @@ function IndividualCamp({id,user}) {
              axios.get('https://yelpcampserver.herokuapp.com/api/author/'+author).then((res)=>{
             console.log(res.data);
             setPostBy(res.data);
-        }).catch((e)=>{console.log(e)})
+            // eslint-disable-next-line 
+        }).
+        catch((e)=>{console.log(e)})
+        // eslint-disable-next-line 
         }).
         catch((e)=>{console.log(e)});
 
         
-    },[])
+    },
+    // eslint-disable-next-line 
+    [])
     
   return <div className='individual-camp'>
         <div className="page-container">
