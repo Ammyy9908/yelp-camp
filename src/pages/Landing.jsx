@@ -16,9 +16,9 @@ camps on Earth.</h1>
 <p>YelpCamp is a curated list of the best camping spots on
 Earth. Unfiltered and unbiased reviews.</p>
 <ul className="app_features">
-  <li><img src="/assets/checkmark.svg" alt="" />Add your own camp suggestions.</li>
-  <li><img src="/assets/checkmark.svg" alt="" />Leave reviews and experiences.</li>
-  <li><img src="/assets/checkmark.svg" alt="" />See locations for all camps.</li>
+  <li><img src="/assets/checkmark_icon.svg" alt="" />Add your own camp suggestions.</li>
+  <li><img src="/assets/checkmark_icon.svg" alt="" />Leave reviews and experiences.</li>
+  <li><img src="/assets/checkmark_icon.svg" alt="" />See locations for all camps.</li>
 </ul>
 <Link to="/browse" className='btn btn-large btn-view-camps'>View Campgrounds</Link>
 <div className="partners">
