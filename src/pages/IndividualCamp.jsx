@@ -20,13 +20,13 @@ function IndividualCamp({id,user}) {
     const [postBy,setPostBy] = React.useState(null);
 
     React.useEffect(()=>{
-        axios.get('http://localhost:5000/api/camp/'+id).then((res)=>{
+        axios.get('https://yelpcampserver.herokuapp.com/api/camp/'+id).then((res)=>{
             console.log(res.data);
             const {camp} = res.data;
             setCamp(camp);
             return camp.author;
         }).then((author)=>{
-             axios.get('http://localhost:5000/api/author/'+author).then((res)=>{
+             axios.get('https://yelpcampserver.herokuapp.com/api/author/'+author).then((res)=>{
             console.log(res.data);
             setPostBy(res.data);
         }).catch((e)=>{console.log(e)})

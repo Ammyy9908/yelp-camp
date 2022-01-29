@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 const getuser = async () =>{
     
     try{
-        const r= await axios.get(`http://localhost:5000/auth/user`,{
+        const r= await axios.get(`https://yelpcampserver.herokuapp.com/auth/user`,{
             headers:{
                 'Authorization':`${Cookies.get('jwt-token')}`
             }

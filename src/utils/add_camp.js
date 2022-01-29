@@ -4,7 +4,7 @@ import Cookies from 'js-cookie';
 const addCamp = async (title,image,description,price) =>{
     
     try{
-        const r= await axios.post(`http://localhost:5000/api/camp/new`,{
+        const r= await axios.post(`https://yelpcampserver.herokuapp.com/api/camp/new`,{
             title,
             image,
             description,
