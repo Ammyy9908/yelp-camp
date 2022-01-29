@@ -13,7 +13,7 @@ function SearchPage() {
                     <p>View our hand-picked campgrounds from all over the world, or add your own.</p>
                     <form className="search-page-form">
                         <div className="search-page-search-input">
-                            <img src="./assets/search.svg" alt="" />
+                            <img src="/assets/search.svg" alt="" />
                             <input type="text" placeholder="Search for campus" />
                         </div>
                         <input type="submit" value="Search" />
@@ -33,7 +33,7 @@ function SearchPage() {
 
                 <footer className='search-page-footer'>
                     <Link to="/">
-                        <img src="./assets/logo.svg" alt="" />
+                        <img src="/assets/logo.svg" alt="" />
                     </Link>
                 </footer>
             </div>

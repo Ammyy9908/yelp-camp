@@ -35,7 +35,7 @@ camps on here are
 definitely well picked and
 added."</h3>
 <div className="login-testimonial-user-meta">
-    <img src="./assets/user-testimonial.svg" alt="" />
+    <img src="/assets/user-testimonial.svg" alt="" />
     <div className="testimonial-user-meta">
         <h4>May Andrews</h4>
         <p>Professional Hiker</p>
