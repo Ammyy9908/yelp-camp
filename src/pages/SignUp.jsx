@@ -1,7 +1,25 @@
 import React from 'react';
 import "./LoginPage.css"
 import {Link} from 'react-router-dom';
+import signup from '../utils/signup';
+import Cookies from 'js-cookie';
 function SignUp() {
+
+    const [username,setUsername] = React.useState("");
+    const [password,setPassword] = React.useState("");
+
+    const handleSignup = (e)=>{
+        signup(username,password).then((data)=>{
+            const {error,token} = data;
+            if(error){
+                return alert(error);
+            }
+            Cookies.set('jwt-token',token);
+            window.location.href = '/browse';
+        })
+    }
+
+
   return <div className='login-page'>
             <div className="login-page-main-container">
             <div className="login-header">
@@ -13,16 +31,16 @@ function SignUp() {
                 <h2>Start exploring camps from all
 around the world.</h2>
 <div className="login-form">
-    <div className="input-field">
+<div className="input-field">
         <label htmlFor="username">Username</label>
-        <input type="text" id="username" placeholder='johndoe_91'/>
+        <input type="text" id="username" placeholder='johndoe_91' value={username} onChange={(e)=>setUsername(e.target.value)}/>
     </div>
     <div className="input-field">
         <label htmlFor="password">Password</label>
-        <input type="password" id="password" placeholder='Enter Your Password'/>
+        <input type="password" id="password" placeholder='Enter Your Password' value={password} onChange={(e)=>setPassword(e.target.value)}/>
     </div>
 
-    <input type="button" value="Create an account" className="signup-btn" />
+    <input type="button" value="Create an account" className="signup-btn" onClick={handleSignup}/>
     <div className="auth-switch">Already a user? <Link to="/login">Signin</Link></div>
 </div>
             </div>

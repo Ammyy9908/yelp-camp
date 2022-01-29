@@ -1,6 +1,7 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
-function HeaderMain() {
+function HeaderMain({user}) {
   return <div className="search-page-header">
   <div className="search-page-header-left">
       <Link to="/" className='logo'>
@@ -10,10 +11,15 @@ function HeaderMain() {
   </div>
 
   <div className="search-page-heade-right">
-      <div className="auth-links">
+      {!user && <div className="auth-links">
       <Link to="/login" className="login-text-btn">Login</Link>
       <Link to="/signup" className='new-account-btn'>Create an account</Link>
-      </div>
+      </div>}
+
+      {user && <div className="authenticated-links">
+          <span>{user.name}</span>
+            <Link to="/logout" className='logout-btn'>Logout</Link>
+      </div>}
       <button className="hamburger">
           <img src="/assets/menu.svg" alt="" />
       </button>
@@ -21,4 +27,9 @@ function HeaderMain() {
 </div>;
 }
 
-export default HeaderMain;
+
+const mapStateToProps = (state)=>({
+    user:state.appReducer.user
+})
+
+export default connect(mapStateToProps,null)(HeaderMain);

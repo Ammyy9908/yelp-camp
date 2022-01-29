@@ -1,4 +1,6 @@
+import axios from 'axios';
 import React from 'react';
+import { connect } from 'react-redux';
 import HeaderMain from '../components/HeaderMain';
 import "./IndividualCamp.css";
 
@@ -12,7 +14,28 @@ function Review(){
 how to get there but it was amazing!</p>
     </div>
 }
-function IndividualCamp() {
+function IndividualCamp({id,user}) {
+    const [campdata,setCamp] = React.useState(null);
+    const [reviews,setReviews] = React.useState(null);
+    const [postBy,setPostBy] = React.useState(null);
+
+    React.useEffect(()=>{
+        axios.get('http://localhost:5000/api/camp/'+id).then((res)=>{
+            console.log(res.data);
+            const {camp} = res.data;
+            setCamp(camp);
+            return camp.author;
+        }).then((author)=>{
+             axios.get('http://localhost:5000/api/author/'+author).then((res)=>{
+            console.log(res.data);
+            setPostBy(res.data);
+        }).catch((e)=>{console.log(e)})
+        }).
+        catch((e)=>{console.log(e)});
+
+        
+    },[])
+    
   return <div className='individual-camp'>
         <div className="page-container">
         <HeaderMain/>
@@ -21,25 +44,23 @@ function IndividualCamp() {
             <div className="camp-map">
                 <img src="/assets/Map.png" alt="" />
             </div>
-            <div className="camp-info">
+            {campdata && <div className="camp-info">
                 <div className="camp-card-detailed">
                     <div className="camp-card-image">
-                        <img src="/assets/camps/low/first.jpg" alt="" />
+                        <img src={campdata.image} alt="" />
                     </div>
                     <div className="card-title-header">
-                    <h3 className="card-title">Mount Ulap</h3>
-                    <span>$104.99/night</span>
+                    <h3 className="card-title">{campdata.title}</h3>
+                    <span>${campdata.price}/night</span>
                     </div>
                     <p className="camp-description">
-                    Mount Uan is a 7. 7 kilometer moderatelv trafficked noint-to-point trai
-located near luba, benguet, Philippines that offers the chance to set
-wildite and is rated as moderate. The trail is primarilv used for niking
+                    {campdata.description}
                     </p>
-                    <span className="post-by">Submitted ov Andrew Mike</span>
+                    <span className="post-by">Submitted by {postBy}</span>
                 </div>
 
 
-                <div className="camp-reviews">
+                {/* <div className="camp-reviews">
                     <div className="camp-review-container">
                     <Review/>
                     <Review/>
@@ -48,11 +69,16 @@ wildite and is rated as moderate. The trail is primarilv used for niking
                     <div className="review-footer">
                         <a href="#new_review">Leave a Review</a>
                     </div>
-                </div>
-            </div>
+                </div> */}
+            </div>}
         </div>
         </div>
         </div>;
 }
 
-export default IndividualCamp;
+
+const mapStateToProps = (state) => ({
+    user:state.appReducer.user,
+})
+
+export default connect(mapStateToProps,null)(IndividualCamp);

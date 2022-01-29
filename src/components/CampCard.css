@@ -2,15 +2,18 @@
     padding: 15px;
     border: 1px solid #dbdbdb;
     border-radius: 8px;
+    height: max-content;
 }
 
 .camp-card-image{
     width: 100%;
+    height: 330px;
 }
 .camp-card-image img{
     width: 100%;
     border-radius: 8px;
     object-fit: cover;
+    height: 100%;
 }
 
 

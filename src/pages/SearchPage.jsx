@@ -3,7 +3,9 @@ import CampCard from '../components/CampCard';
 import "./SearchPage.css";
 import {Link} from 'react-router-dom';
 import HeaderMain from '../components/HeaderMain';
-function SearchPage() {
+import { connect } from 'react-redux';
+function SearchPage({user,camps}) {
+    console.log(user);
   return <div className='search-page'>
             <div className="page-container">
                 <HeaderMain/>
@@ -18,17 +20,23 @@ function SearchPage() {
                         </div>
                         <input type="submit" value="Search" />
                     </form>
-                    <a href="#new" className='campground-add'>Or add your own campground</a>
+                    <Link to="/new" className='campground-add'>Or add your own campground</Link>
                     </div>
                 </div>
 
                 <div className="campgrounds">
-                        <CampCard image="./assets/camps/low/first.jpg"/>
+                        {/* <CampCard image="./assets/camps/low/first.jpg"/>
                         <CampCard image="./assets/camps/low/second.jpg"/>
                         <CampCard image="./assets/camps/low/third.jpg"/>
                         <CampCard image="./assets/camps/low/fourth.jpg"/>
                         <CampCard image="./assets/camps/low/fifth.jpg"/>
-                        <CampCard image="./assets/camps/low/sixth.jpg"/>
+                        <CampCard image="./assets/camps/low/sixth.jpg"/> */}
+
+                        {
+                            camps && camps.map((camp,index)=>{
+                                return <CampCard key={index} image={camp.image} title={camp.title} description={camp.description} id={camp._id}/>
+                            })
+                        }
                 </div>
 
                 <footer className='search-page-footer'>
@@ -40,4 +48,10 @@ function SearchPage() {
         </div>;
 }
 
-export default SearchPage;
+
+
+const mapStateToProps = (state) => ({
+    user:state.appReducer.user,
+    camps:state.appReducer.camps
+})
+export default connect(mapStateToProps,null)(SearchPage);

@@ -1,0 +1,33 @@
+.new-camp-page{
+    width: 75%;
+    margin: 45px auto;
+}
+
+.new-camp-body{
+    width: 100%;
+    margin: 75px auto;
+}
+.new-camp-body h2{
+    margin-bottom: 15px;
+}
+
+.add_camp_btn{
+    width: 100%;
+    height: 60px;
+    background-color: #000;
+    color: #fff;
+    font-weight: 900;
+    border: 0;
+}
+
+@media screen and (min-width:510px){
+    .new-camp-body{
+        width: 85%;
+    }
+}
+
+@media screen and (min-width:968px){
+    .new-camp-body{
+        width: 60%;
+    }
+}

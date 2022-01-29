@@ -95,9 +95,5 @@
         grid-template-columns: 1fr 3fr;
     }
 
-    .camp-map{
-        
-        position: sticky;
-        top:55px;
-    }
+    
 }

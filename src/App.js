@@ -5,9 +5,33 @@ import SearchPage from './pages/SearchPage';
 import IndividualCamp from './pages/IndividualCamp';
 import LoginPage from './pages/LoginPage';
 import SignUp from './pages/SignUp';
+import getuser from "./utils/get_user";
+import React from 'react';
+import { connect } from 'react-redux';
+import Cookies from 'js-cookie';
+import Logout from './pages/Logout';
+import NewCamp from './pages/NewCamp';
+import fetchCamps from './utils/fetch_camps';
 
+function App({setUser,setCamps}) {
 
-function App() {
+  React.useEffect(()=>{
+    if(Cookies.get('jwt-token')){
+      getuser().then((data)=>{
+        console.log(data);
+        setUser(data);
+      }).catch((e)=>{
+        console.log(e);
+      })
+    }
+
+    fetchCamps().then((data)=>{
+      
+      setCamps(data.camps);
+    }).catch((e)=>{
+      console.log(e);
+    })
+  },[]);
   return (
     <Router>
   <div>
@@ -20,6 +44,14 @@ function App() {
 
     <Route exact path="/browse">
     <SearchPage/>
+    </Route>
+
+    <Route exact path="/logout">
+    <Logout/>
+    </Route>
+
+    <Route exact path="/new">
+    <NewCamp/>
     </Route>
 
     <Route exact path="/login">
@@ -55,4 +87,9 @@ function App() {
   );
 }
 
-export default App;
+
+const mapDispatchToprops = (dispatch)=>({
+  setUser:(user)=>dispatch({type:'SET_USER',user}),
+  setCamps:(camps)=>dispatch({type:'SET_CAMPS',camps})
+})
+export default connect(null,mapDispatchToprops)(App);
