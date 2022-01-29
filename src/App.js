@@ -1,24 +1,57 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router,Switch,Route} from "react-router-dom";
+import Landing from './pages/Landing';
+import SearchPage from './pages/SearchPage';
+import IndividualCamp from './pages/IndividualCamp';
+import LoginPage from './pages/LoginPage';
+import SignUp from './pages/SignUp';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+  <div>
+  
+  
+  <Switch>
+  <Route exact path="/">
+    <Landing/>
+    </Route>
+
+    <Route exact path="/browse">
+    <SearchPage/>
+    </Route>
+
+    <Route exact path="/login">
+    <LoginPage/>
+    </Route>
+
+    <Route exact path="/signup">
+    <SignUp/>
+    </Route>
+   
+
+    <Route
+           exact
+            path="/camp/:id"
+            render={(props) => {
+              const id = props.match.params.id;
+              return <IndividualCamp id={id && id} />;
+            }}
+           
+          />
+
+    
+
+       
+          
+          
+
+   
+   
+  </Switch>
+</div>
+</Router>
   );
 }
 

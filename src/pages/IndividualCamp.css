@@ -1,0 +1,103 @@
+.individual-camp-body{
+    width: 100%;
+    margin-top: 45px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap:32px;
+}
+
+.camp-map{
+    padding: 12px;
+    border: 1px solid #dbdbdb;
+    height: max-content;
+    background-color: #fff;
+   
+}
+.camp-info{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap:32px;
+    margin: 0 auto;
+    
+}
+
+.camp-card-detailed{
+    padding: 52px;
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    height: max-content;
+}
+
+.card-title-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+
+.post-by{
+    margin-top: 12px;
+    display: inline-block;
+    opacity: .6;
+}
+
+.camp-reviews{
+    padding: 52px;
+    background-color: #fff;
+    border: 1px solid #dbdbdb;
+    height: max-content;
+    display: flex;
+    flex-direction: column;
+    gap:12px;
+}
+
+.camp-review-container{
+    display: flex;
+    flex-direction: column;
+    gap:26px;
+}
+
+
+.camp-review{
+    padding-bottom: 12px;
+    border-bottom: 1px solid #dbdbdb;
+    display: flex;
+    flex-direction: column;
+    gap:12px;
+}
+.review-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.review-footer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.review-footer a{
+    display: flex;
+    width: 125px;
+    height: 40px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 2px;
+    align-items: center;
+    justify-content: center;
+}
+
+@media screen and (min-width:968px){
+    .individual-camp-body{
+        grid-template-columns: 1fr 3fr;
+    }
+
+    .camp-map{
+        
+        position: sticky;
+        top:55px;
+    }
+}

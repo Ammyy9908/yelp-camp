@@ -1,0 +1,197 @@
+.search-page{
+    width: 100%;
+    
+}
+
+.search-page-header{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.search-page-header-left,.logo{
+    display: flex;
+    align-items: center;
+    gap:12px;
+}
+.link{
+    font-weight: 400;
+}
+
+
+.search-page-heade-right{
+    display: flex;
+    align-items: center;
+}
+
+.hamburger{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #F9F6F1;
+    border: 0;
+    width: 38px;
+    height: 38px;
+}
+.auth-links{
+    display: none;
+}
+
+.login-text-btn{
+    font-weight: 400;
+    color: #6e6e6e;
+}
+
+.new-account-btn{
+    width: 176px;
+    height: 50px;
+    display: flex;
+    background-color: #000;
+    border-radius: 5px;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.search-page-jumbotron{
+    width: 100%;
+    margin: 65px auto;
+    padding-top: 55px;
+    padding-bottom: 55px;
+    background-color: #F9F6F1;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.jumbotron-content{
+    width:90%;
+    margin: 0 0;
+}
+.jumbotron-content h1{
+    width: 100%;
+}
+.jumbotron-content p{
+    width: 75%;
+    color: #5e5e5e;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.search-page-form{
+    display: block;
+    align-items: flex-start;
+    gap:18px;
+    width: 100%;
+    flex-direction: column;
+    height: 60px;
+}
+.search-page-search-input{
+    width: 95%;
+    height: 100%;
+    border: 1px solid #dbdbdb;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    gap:5px;
+    height: 60px;
+    padding-left: 12px;
+    border-radius: 5px;
+}
+.search-page-search-input input{
+    height: 80%;
+    width: 85%;
+    border: 0;
+    outline: 0;
+}
+.search-page-form input[type='submit']{
+    width: 100%;
+    background-color: #000000;
+    border: 0;
+    color: #fff;
+    border-radius: 5px;
+    font-weight: 700;
+    cursor: pointer;
+    height: 60px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.campground-add{
+    text-decoration: underline;
+    color: #6b6b6b;
+    margin-top: 12px;
+    display: block;
+    margin-top: 85px;
+}
+
+
+.campgrounds{
+    display: grid;
+    grid-gap:32px;
+    grid-template-columns: 1fr;
+}
+
+.search-page-footer{
+    width: 100%;
+    margin: 45px auto;
+
+}
+
+
+@media screen and (min-width:515px){
+    .search-page-form{
+        width: 100%;
+        flex-direction: row;
+        display: flex;
+    }
+
+    .campgrounds{
+       
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .search-page-form input[type='submit']{
+        width: 106px;
+        height: 45px;
+        margin: 0;
+    }
+    .search-page-search-input{
+        width: 254px;
+        height: 45px;
+    }
+
+    .campground-add{
+        text-decoration: underline;
+        color: #6b6b6b;
+        margin-top: 12px;
+        display: block;
+        margin-top: 0;
+    }
+
+    .jumbotron-content p{
+        font-size: 16px;
+    }
+}
+/* @media screen and (min-width:769px){
+    
+
+    
+} */
+@media screen and (min-width:968px){
+    .campgrounds{
+       
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    .hamburger{
+        display: none;
+    }
+    .auth-links{
+        display: flex;
+    align-items: center;
+    gap:8px;
+    }
+}
