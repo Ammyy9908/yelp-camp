@@ -48,7 +48,7 @@ function IndividualCamp({id,user}) {
         <div className="individual-camp-body">
             {campdata && <div className="camp-map">
                 {/* <img src="/assets/Map.png" alt="" /> */}
-                <iframe src={`https://maps.google.com/maps?q=${campdata.lat},${campdata.long}&z=15&output=embed`} width="600" height="450" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src={`https://maps.google.com/maps?q=${campdata.lat},${campdata.long}&z=15&output=embed`} width="600" height="450" allowfullscreen="" loading="lazy" title="map"></iframe>
             </div>}
             {campdata && <div className="camp-info">
                 <div className="camp-card-detailed">
