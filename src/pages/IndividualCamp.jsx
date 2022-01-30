@@ -46,9 +46,10 @@ function IndividualCamp({id,user}) {
         <HeaderMain/>
 
         <div className="individual-camp-body">
-            <div className="camp-map">
-                <img src="/assets/Map.png" alt="" />
-            </div>
+            {campdata && <div className="camp-map">
+                {/* <img src="/assets/Map.png" alt="" /> */}
+                <iframe src={`https://maps.google.com/maps?q=${campdata.lat},${campdata.long}&z=15&output=embed`} width="600" height="450" allowfullscreen="" loading="lazy"></iframe>
+            </div>}
             {campdata && <div className="camp-info">
                 <div className="camp-card-detailed">
                     <div className="camp-card-image">

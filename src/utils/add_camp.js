@@ -1,7 +1,8 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-const addCamp = async (title,image,description,price) =>{
+const addCamp = async (title,image,description,price,lat,long) =>{
+    console.log(title,image,description,price,lat,long);
     
     try{
         const r= await axios.post(`https://yelpcampserver.herokuapp.com/api/camp/new`,{
@@ -9,7 +10,9 @@ const addCamp = async (title,image,description,price) =>{
             image,
             description,
             price,
-            location:'New York'
+            location:'New York',
+            lat,
+            long
         },{
             headers:{
                 'Authorization':`${Cookies.get('jwt-token')}`

@@ -4,8 +4,25 @@ import "./SearchPage.css";
 import {Link} from 'react-router-dom';
 import HeaderMain from '../components/HeaderMain';
 import { connect } from 'react-redux';
+import axios from 'axios';
 function SearchPage({user,camps}) {
     console.log(user);
+    const [query,setQuery] = React.useState('');
+    const [results,setResults] = React.useState(null);
+
+    const handleSearch = (e)=>{
+        e.preventDefault();
+        console.log(query);
+        axios.get(`https://yelpcampserver.herokuapp.com/api/search?q=${query}`).then((res)=>{
+            console.log(res.data);
+            setResults(res.data.camps);
+            setQuery('');
+        }).catch(e=>console.log(e));
+    }
+
+    const handleReset =(e)=>{
+        setResults(null);
+    }
   return <div className='search-page'>
             <div className="page-container">
                 <HeaderMain/>
@@ -13,16 +30,18 @@ function SearchPage({user,camps}) {
                     <div className="jumbotron-content">
                     <h1>Welcome to YelpCamp!</h1>
                     <p>View our hand-picked campgrounds from all over the world, or add your own.</p>
-                    <form className="search-page-form">
+                    <form className="search-page-form" onSubmit={handleSearch}>
                         <div className="search-page-search-input">
                             <img src="/assets/search.svg" alt="" />
-                            <input type="text" placeholder="Search for campus" />
+                            <input type="text" placeholder="Search for campus" value={query} onChange={(e)=>setQuery(e.target.value)}/>
                         </div>
                         <input type="submit" value="Search" />
                     </form>
                     <Link to="/new" className='campground-add'>Or add your own campground</Link>
                     </div>
                 </div>
+
+                {results && <button className='clear_btn' onClick={handleReset}>Clear</button>}
 
                 <div className="campgrounds">
                         {/* <CampCard image="./assets/camps/low/first.jpg"/>
@@ -33,7 +52,13 @@ function SearchPage({user,camps}) {
                         <CampCard image="./assets/camps/low/sixth.jpg"/> */}
 
                         {
-                            camps && camps.map((camp,index)=>{
+                            results && results.map((camp,index)=>{
+                                return <CampCard key={index} image={camp.image} title={camp.title} description={camp.description} id={camp._id}/>
+                            })
+                        }
+
+                        {
+                            !results && camps && camps.map((camp,index)=>{
                                 return <CampCard key={index} image={camp.image} title={camp.title} description={camp.description} id={camp._id}/>
                             })
                         }

@@ -10,11 +10,13 @@ function NewCamp({insertCamp}) {
     const [image,setImage] = React.useState('');
     const [description,setDescription] = React.useState('');
     const [price,setPrice] = React.useState('');
+    const [lat,setLat] = React.useState('');
+    const [lang,setLang] = React.useState('');
 
 
     const handleCampAdd = ()=>{
         if(title && image && description && price){
-            addCamp(title,image,description,price).then((data)=>{
+            addCamp(title,image,description,price,lat,lang).then((data)=>{
                 const {camp} = data;
                 insertCamp(camp);
                 setTitle('');
@@ -42,6 +44,15 @@ function NewCamp({insertCamp}) {
                     <div className="input-field">
                         <label htmlFor="image">Image</label>
                         <input type="text" name="image" id="image" placeholder='Enter Image URL' value={image} onChange={(e)=>setImage(e.target.value)}/>
+                    </div>
+
+                    <div className="input-field">
+                        <label htmlFor="lat">Latitude</label>
+                        <input type="text" name="lat" id="lat" placeholder='Enter Latitude' value={lat} onChange={(e)=>setLat(e.target.value)}/>
+                    </div>
+                    <div className="input-field">
+                        <label htmlFor="long">Longitude</label>
+                        <input type="text" name="long" id="long" placeholder='Enter Longitude' value={lang} onChange={(e)=>setLang(e.target.value)}/>
                     </div>
                     <div className="input-field">
                         <label htmlFor="desc">Description</label>
